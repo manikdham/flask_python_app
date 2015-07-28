@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+  <h2>Create Username</h2>
+  {% for message in get_flashed_messages() %}
+  <div class="flash">{{ message }}</div>
+  {% endfor %}
+  <form action="" method=post>
+    {{ form.hidden_tag() }}
+ 
+    Enter usernme
+    {{ form.username }}
+    <br>
+    Enter password
+    {{ form.password }}
+    <br>
+    Enter home dir
+    {{ form.homefolder }}
+    <br>
+    Enter shell type
+    {{ form.shelltype }}
+    <br>
+    Sudo Option
+    {{ form.sudo_options()}}
+ 
+    {{ form.submit }}
+  </form>
+{% endblock %}

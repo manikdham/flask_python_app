@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+  <h2>Modify Data</h2>
+  {% for message in get_flashed_messages() %}
+  <div class="flash">{{ message }}</div>
+  {% endfor %}
+  <form action="" method=post>
+    {{ form.hidden_tag() }}
+ 
+    Enter the username
+    {{ form.value1 }}
+    <br>
+    Select Option:
+    {{ form.options }}
+    <br>
+    Enter the new username
+    {{ form.value2 }}
+    <br>
+    Enter the new home dir 
+    {{ form.value3 }}
+    <br>
+    Enter the new password
+    {{ form.value4 }}
+    <br>
+    {{ form.submit1 }}
+
+  </form>
+{% endblock %}

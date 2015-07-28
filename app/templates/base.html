@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Problem App</title>
+  </head>
+  <body>
+    <header>
+      <div >
+        <h1>Flask App</h1>
+        <a href="{{ url_for('create') }}">Create</a>
+        <a href="{{ url_for('delete') }}">Delete</a>
+	<a href="{{ url_for('modify') }}">Modify</a>
+      </div>
+    </header>
+    <div> 
+      {% block content %}
+      {% endblock %}
+    <div>
+  </body>
+</html>

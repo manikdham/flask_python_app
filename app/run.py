@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, flash
-from forms import UserForm, ModifyForm
+from forms import UserForm, ModifyForm, SudoForm
 import os, pwd, crypt
 
 app = Flask(__name__)
@@ -7,7 +7,8 @@ app.secret_key = 'feifnsdlfnas32423'
 
 @app.route("/")
 def hello():
-    return "Hello World!"
+  form = UserForm()
+  return render_template('user.html', form=form) 
 
 @app.route('/create', methods=['GET', 'POST'])
 def create():
@@ -82,6 +83,27 @@ def modify():
 
   elif request.method == 'GET':
     return render_template('modify.html', form=form)
+
+@app.route('/grant_sudo', methods=['GET', 'POST'])
+def grant_sudo():
+  form = SudoForm()
+  if request.method == 'POST':
+    if form.validate() == False:
+      flash('All fields are required.')
+      return render_template('user_sudo.html', form=form)
+    elif form.sudo_options.data == 'yes' and form.username.data in [x[0] for x in pwd.getpwall()]:
+      os.system("usermod -a -G mysudogroup " +form.username.data)
+      flash('User added to sudo group successfully')
+      return render_template('user_sudo.html', form=form)
+    elif form.sudo_options.data == 'no' and form.username.data in [x[0] for x in pwd.getpwall()]:
+      os.system("gpasswd -d " +form.username.data +" mysudogroup" )
+      flash('User user removed from sudo group successfully')
+      return render_template('user_sudo.html', form=form)
+    else:
+      flash('Enter valid User')
+      return render_template('user_sudo.html', form=form)
+  elif request.method == 'GET':
+        return render_template('user_sudo.html', form=form)
 
 
 

@@ -1,24 +1,18 @@
 {% extends "base.html" %}
  
 {% block content %}
-  <h3>Create Username</h3>
+  <h3>Grant Sudo Rights</h3><br>
+  Doing this will add the user to an existing sudoers group<br><br>
   {% for message in get_flashed_messages() %}
   <div class="flash">{{ message }}</div>
   {% endfor %}
   <form action="" method=post>
     {{ form.hidden_tag() }}
-    Enter usernme   ::
+    Enter username   ::
     {{ form.username }}
     <br>
-    Enter password  ::
-    {{ form.password }}
-    <br>
-    Enter home dir  ::
-    {{ form.homefolder }}
-    <br>
-    Enter shell type::
-    {{ form.shelltype }}
-    <br>
+    Grant Sudo Rights::
+    {{ form.sudo_options()}}
     {{ form.submit }}
   </form>
 {% endblock %}

@@ -6,7 +6,6 @@ class UserForm(Form):
   password = TextField("Password",[validators.Required()])
   homefolder = TextField("HomeFolder",[validators.Required()])
   shelltype = TextField("ShellType",[validators.Required()])
-  sudo_options = RadioField('Options', choices=[('yes','YES'),('no','NO')])
   submit = SubmitField("Submit")
 
 class ModifyForm(Form):
@@ -16,3 +15,9 @@ class ModifyForm(Form):
   value4 = TextField("Value4")
   options = RadioField("Options1", choices=[('username','USERNAME'),('homedir','HOME DIR'),('password','PASSWORD')])
   submit1 = SubmitField("Submit1")
+
+class SudoForm(Form):
+  username = TextField("Username",[validators.Required()])
+  sudo_options = RadioField('Options', choices=[('yes','YES'),('no','NO')])
+  submit = SubmitField("Submit")
+

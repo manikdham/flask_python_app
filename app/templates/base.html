@@ -1,15 +1,20 @@
 <html>
   <head>
     <title>Idea Device Problem App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   </head>
   <body>
     <header>
       <div >
         <h2>Python Flask App</h2>
-        <a href="{{ url_for('create') }}">Create</a>
-        <a href="{{ url_for('delete') }}">Delete</a>
-	<a href="{{ url_for('modify') }}">Modify</a>
-        <a href="{{ url_for('grant_sudo') }}">Grant Sudo</a>
+        <nav>
+	<ul class="menu">
+        <li><a href="{{ url_for('create') }}">Create</a></li>
+        <li><a href="{{ url_for('delete') }}">Delete</a></li>
+	<li><a href="{{ url_for('modify') }}">Modify</a></li>
+        <li><a href="{{ url_for('grant_sudo') }}">Grant Sudo</a></li>
+ 	</ul>
+      <nav>     
       </div>
     </header>
     <div> 

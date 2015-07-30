@@ -5,12 +5,13 @@
   {% for message in get_flashed_messages() %}
   <div class="flash">{{ message }}</div>
   {% endfor %}
+  <br>
   <form action="" method=post>
     {{ form.hidden_tag() }}
     Enter usernme   ::
     {{ form.username }}
     <br>
-    Enter password  ::
+    Enter password::
     {{ form.password }}
     <br>
     Enter home dir  ::

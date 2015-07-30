@@ -1,13 +1,14 @@
 {% extends "base.html" %}
  
 {% block content %}
-  <h2>Delete Username</h2>
+  <h3>Delete User</h3>
   {% for message in get_flashed_messages() %}
   <div class="flash">{{ message }}</div>
   {% endfor %}
+  <br>
   <form action="" method=post>
     {{ form.hidden_tag() }}
-    Enter usernme  ::
+    Enter username   ::
     {{ form.username }}
     <br>
     {{ form.submit }}
